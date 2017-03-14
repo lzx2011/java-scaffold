@@ -71,6 +71,4 @@ class Boss implements Runnable{
             //object.notify();
         }
     }
-
-
 }
