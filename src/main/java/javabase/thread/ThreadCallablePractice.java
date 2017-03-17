@@ -31,7 +31,6 @@ public class ThreadCallablePractice {
         practice.futureTaskTest();
 
     }
-
 }
 
 class Task implements Callable<String>{
