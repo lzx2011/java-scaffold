@@ -5,6 +5,7 @@ import org.junit.Test;
 import java.io.File;
 import java.io.PrintWriter;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created by gary on 16/8/20.
@@ -55,6 +56,18 @@ public class StringTest {
         PrintWriter pw = new PrintWriter(System.out);
         pw.write(array);
         pw.close();
+    }
+
+    @Test
+    public void splitTest(){
+        String test = "sdfsdf,sdfsf,";
+        String my = test.substring(0, test.lastIndexOf(","));
+        System.out.println(my);
+
+        //String impresss = "好看^美丽";
+        String impresss = "sdfsfd^sdfsf";
+        List<String> list = Arrays.asList(impresss.split("\\^"));
+        System.out.println(list.toString());
     }
 
     public static void main(String[] args){
