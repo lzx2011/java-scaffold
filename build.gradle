@@ -26,5 +26,6 @@ dependencies {
     compile(libraries.spring_webmvc)
     compile(libraries.spring_jdbc)
     compile(libraries.servlet_api)
+    compile(libraries.jsoup)
 
 }

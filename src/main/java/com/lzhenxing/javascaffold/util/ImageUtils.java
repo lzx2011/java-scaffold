@@ -15,6 +15,9 @@ import java.awt.color.ColorSpace;
 import java.awt.geom.AffineTransform;
 import java.awt.image.*;
 import java.io.*;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -508,11 +511,77 @@ public class ImageUtils {
 		logger.info("使用[ImageReader]获取图片尺寸耗时：[" + (endTime - beginTime) + "]ms");
 	}
 
+	/**
+	 * 根据url获取图片信息
+	 * @param urlStr
+     */
+	public static void getImageInfoByUrl1(String urlStr){
+		try{
+			URL url = new URL(urlStr);
+			URLConnection urlConnection = url.openConnection();
+			int length = urlConnection.getContentLength();
+			System.out.print("length: " + length);
+			if(length == -1){
+				System.out.print("image not exist");
+			}else{
+				//BufferedImage sourceImg = ImageIO.read(urlConnection.getInputStream());
+				BufferedImage sourceImg = ImageIO.read(url);
+				System.out.print("image width:" + sourceImg.getWidth());
+				System.out.print("image height:" + sourceImg.getHeight());
+			}
+
+		}catch (MalformedURLException e){
+			logger.info("url not right " + e.getMessage(), e);
+		}catch (IOException e){
+			logger.info("IOException " + e.getMessage(), e);
+		}
+	}
+
+	public static void getImageInfoByUrl(String urlStr){
+		try{
+			URL url = new URL(urlStr);
+			URLConnection urlConnection = url.openConnection();
+			int length = urlConnection.getContentLength();
+			System.out.print("length: " + length);
+			if(length == -1){
+				System.out.print("image not exist");
+			}else{
+				//BufferedImage sourceImg = ImageIO.read(urlConnection.getInputStream());
+				//BufferedImage sourceImg = ImageIO.read(url);
+				//System.out.print("image width:" + sourceImg.getWidth());
+				//System.out.print("image height:" + sourceImg.getHeight());
+
+				try(ImageInputStream in = ImageIO.createImageInputStream(urlConnection.getInputStream())){
+					final Iterator<ImageReader> readers = ImageIO.getImageReaders(in);
+					if (readers.hasNext()) {
+						ImageReader reader = readers.next();
+						try {
+							reader.setInput(in);
+							//return new Dimension(reader.getWidth(0), reader.getHeight(0));
+							System.out.print(reader.getWidth(0) + " " + reader.getHeight(0));
+						} finally {
+							reader.dispose();
+						}
+					}
+				}
+			}
+
+		}catch (MalformedURLException e){
+			logger.info("url not right " + e.getMessage(), e);
+		}catch (IOException e){
+			logger.info("IOException " + e.getMessage(), e);
+		}
+	}
+
     public static void main(String[] args){
         String filePath = "/Users/gary/Documents/10005582/1.jpg";
         //获取图片信息比较
-        getImageSizeByImageReader(filePath);
+        //getImageSizeByImageReader(filePath);
         //getImageInfo(filePath);
         //Im4JavaUtils.getImageInfo(filePath);
+
+		String urlStr = "http://a.vpisfsdf.com/00112768/10001324/1886839923-920839372132373-6.jpg";
+		getImageInfoByUrl(urlStr);
+
     }
 }

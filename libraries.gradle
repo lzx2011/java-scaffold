@@ -19,6 +19,7 @@ ext{
     commonsnetVersion                       = '3.5'
     httpclientVersion						= '4.5.1'
     im4javaVersion							= '1.4.0'
+    jsoupVersion                            = '1.8.3'
 
 
 
@@ -58,7 +59,9 @@ ext{
 
             //unit test
             spring_test:			   	"org.springframework:spring-test:${springFrameworkVersion}",
-            junit:						"junit:junit:${junitVersion}"
+            junit:						"junit:junit:${junitVersion}",
+
+            jsoup:                      "org.jsoup:jsoup:${jsoupVersion}"
 
             ]
 

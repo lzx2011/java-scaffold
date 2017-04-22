@@ -1,4 +1,4 @@
-package com.lzhenxing.javascaffold.javabase.io;
+package com.lzhenxing.javascaffold.javabase.grammar;
 
 import org.junit.Test;
 
@@ -71,6 +71,7 @@ public class StringTest {
     }
 
     public static void main(String[] args){
-        System.out.println();
+        String string;
+        Integer i;
     }
 }
