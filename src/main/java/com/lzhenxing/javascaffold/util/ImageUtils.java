@@ -494,12 +494,12 @@ public class ImageUtils {
 		return imageInfoMap;
 	}
 
-	public static void getImageSizeByImageReader(String src) {
+	public static void getImageInfoByImageReader(String filePath) {
 		long beginTime = new Date().getTime();
-		File file = new File(src);
+		File file = new File(filePath);
 		try {
 			Iterator<ImageReader> readers = ImageIO.getImageReadersByFormatName("jpg");
-			ImageReader reader = (ImageReader) readers.next();
+			ImageReader reader = readers.next();
 			ImageInputStream iis = ImageIO.createImageInputStream(file);
 			reader.setInput(iis, true);
 			System.out.println("width:" + reader.getWidth(0));
@@ -524,12 +524,10 @@ public class ImageUtils {
 			if(length == -1){
 				System.out.print("image not exist");
 			}else{
-				//BufferedImage sourceImg = ImageIO.read(urlConnection.getInputStream());
 				BufferedImage sourceImg = ImageIO.read(url);
 				System.out.print("image width:" + sourceImg.getWidth());
 				System.out.print("image height:" + sourceImg.getHeight());
 			}
-
 		}catch (MalformedURLException e){
 			logger.info("url not right " + e.getMessage(), e);
 		}catch (IOException e){
@@ -546,19 +544,13 @@ public class ImageUtils {
 			if(length == -1){
 				System.out.print("image not exist");
 			}else{
-				//BufferedImage sourceImg = ImageIO.read(urlConnection.getInputStream());
-				//BufferedImage sourceImg = ImageIO.read(url);
-				//System.out.print("image width:" + sourceImg.getWidth());
-				//System.out.print("image height:" + sourceImg.getHeight());
-
 				try(ImageInputStream in = ImageIO.createImageInputStream(urlConnection.getInputStream())){
 					final Iterator<ImageReader> readers = ImageIO.getImageReaders(in);
 					if (readers.hasNext()) {
 						ImageReader reader = readers.next();
 						try {
 							reader.setInput(in);
-							//return new Dimension(reader.getWidth(0), reader.getHeight(0));
-							System.out.print(reader.getWidth(0) + " " + reader.getHeight(0));
+							System.out.print(reader.getWidth(0) + "," + reader.getHeight(0));
 						} finally {
 							reader.dispose();
 						}

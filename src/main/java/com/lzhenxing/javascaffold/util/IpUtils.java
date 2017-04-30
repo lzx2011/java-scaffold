@@ -1,5 +1,6 @@
 package com.lzhenxing.javascaffold.util;
 
+import java.net.InetAddress;
 import java.util.Random;
 
 /**
@@ -48,7 +49,22 @@ public class IpUtils {
 		return x;
 	}
 
+	public static String getLocalIp() {
+		String ip = "";
+		try {
+			/**返回本地主机。*/
+			InetAddress addr = InetAddress.getLocalHost();
+			/**返回 IP 地址字符串（以文本表现形式）*/
+			ip = addr.getHostAddress();
+		} catch(Exception ex) {
+			return ip;
+		}
+
+		return ip;
+	}
+
     public static void main(String[] args){
-        System.out.println(getRandomIp());
+        //System.out.println(getRandomIp());
+		System.out.print(IpUtils.getLocalIp());
     }
 }
