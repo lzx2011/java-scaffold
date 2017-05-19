@@ -1,17 +1,21 @@
 package com.lzhenxing.javascaffold.util;
 
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.io.*;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * Created by gary on 16/8/30.
  */
 public class FileUtils {
+
+    public final static Logger logger = LoggerFactory.getLogger(FileUtils.class);
+
 
     public static final String FILE_FULL_NAME = "fullName";
     public static final String FILE_NAME = "name";
@@ -130,6 +134,256 @@ public class FileUtils {
         int index = filePath.lastIndexOf(".");
         return filePath.substring(index+1);
     }
+
+    /**
+     * 复制文件
+     * @param sourceFile 源文件
+     * @param targetFile 目标文件
+     * @throws IOException
+     */
+    public static void copyFile(File sourceFile, File targetFile) throws IOException {
+        if(!sourceFile.exists()) return ;
+
+        FileInputStream in = new FileInputStream(sourceFile);
+        FileOutputStream out = new FileOutputStream(targetFile);
+        byte[] buffer = new byte[102400];
+        while (true) {
+            int ins = in.read(buffer);
+            if (ins == -1) {
+                in.close();
+                out.flush();
+                out.close();
+                break;
+            } else {
+                out.write(buffer, 0, ins);
+            }
+        }
+    }
+
+    /**
+     * 复制文件夹
+     * @param sourceDir 源文件夹
+     * @param targetDir 目标文件夹
+     * @throws IOException
+     */
+    public static void copyDirectiory(File sourceDir, File targetDir) throws IOException {
+        if (!sourceDir.exists()) return ;
+        // 新建目标目录
+        targetDir.mkdirs();
+        // 获取源文件夹当前下的文件或目录
+        File[] file = sourceDir.listFiles();
+        for (int i = 0; i < file.length; i++) {
+            if (file[i].isFile()) {
+                // 源文件
+                File sourceFile = file[i];
+                // 目标文件
+                File targetFile = new File(targetDir.getAbsolutePath() + File.separator + file[i].getName());
+                FileUtils.copyFile(sourceFile, targetFile);
+            }
+            if (file[i].isDirectory()) {
+                // 复制的源文件夹
+                File dir1 = new File(sourceDir + File.separator + file[i].getName());
+                // 复制的目标文件夹
+                File dir2 = new File(targetDir + File.separator + file[i].getName());
+                FileUtils.copyDirectiory(dir1, dir2);
+            }
+        }
+    }
+
+    public static boolean deleteFile(File file) {
+        // 判断是文件还是目录
+        if (file.exists()) {
+            if (file.isDirectory()) {
+                // 若目录下没有文件则直接删除
+                if (file.listFiles().length == 0) {
+                    file.delete();
+                } else {
+                    // 若有则把文件放进数组，并判断是否有下级目录
+                    File delFile[] = file.listFiles();
+                    int len = file.listFiles().length;
+                    for (int j = 0; j < len; j++) {
+                        if (delFile[j].isDirectory()) {
+                            // 递归调用del方法并取得子目录路径
+                            deleteFile(new File(delFile[j].getAbsolutePath()));
+                        }
+                        // 删除文件
+                        delFile[j].delete();
+                    }
+                    file.delete();
+                }
+            } else {
+                file.delete();
+            }
+        }
+        return true;
+    }
+
+    /**
+     *
+     * deleteAllByPath:根据文件目录删除其下全部文件跟文件夹
+     *
+     * @param path
+     */
+    public static void deleteAllByPath(String path) {
+        try {
+            File file = new File(path);
+            if (!file.canWrite()) {
+                file.setWritable(true);
+            }
+            if (file.isDirectory()) {
+                String[] fs = file.list();
+                for (String f : fs) {
+                    deleteAllByPath(path + "\\" + f);
+                }
+            }
+            file.delete();
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+        }
+    }
+
+    /**
+     * getFlies:获取文件下面的子文件
+     *
+     * @param path
+     * @return
+     */
+    public static File[] getFlies(String path) {
+        try {
+            File file = new File(path);
+            return file.listFiles();
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            return null;
+        }
+    }
+
+
+
+
+    /**
+     *
+     * saveFile: 保存文件
+     *
+     * @param file
+     * @param filePath
+     */
+    public static void saveFile(MultipartFile file, String filePath) {
+        OutputStream fos = null;
+        InputStream is = null;
+        try {
+            fos = new FileOutputStream(filePath);
+            is = file.getInputStream();
+            byte[] b = new byte[1024];
+            while (is.read(b) != -1) {
+                fos.write(b);
+            }
+        } catch (IOException e) {
+            logger.error(e.getMessage());
+        } finally {
+            try {
+                fos.close();
+            } catch (IOException e) {
+                logger.error(e.getMessage());
+            }
+            try {
+                is.close();
+            } catch (IOException e) {
+                logger.error(e.getMessage());
+            }
+        }
+    }
+
+    /**
+     *
+     * getFileSizes:取得文件大小
+     *
+     * @param f
+     * @return
+     * @throws Exception
+     */
+    public static int getFileSizes(File f) {
+        int s = 0;
+        FileInputStream fis = null;
+        try {
+            fis = new FileInputStream(f);
+            s = fis.available();
+        } catch (FileNotFoundException e) {
+            logger.error(e.getMessage());
+        } catch (IOException e) {
+            logger.error(e.getMessage());
+        } finally {
+            try {
+                fis.close();
+            } catch (IOException e) {
+                logger.error(e.getMessage());
+            }
+        }
+        return s;
+    }
+
+    /**
+     *
+     * getFileBytes: 从文件里面获取字符流
+     *
+     * @param f
+     * @return
+     */
+    public static byte[] getFileBytes(File f) {
+        int s = 0;
+        FileInputStream fis = null;
+        try {
+            fis = new FileInputStream(f);
+            s = fis.available();
+            byte[] b = new byte[s];
+            fis.read(b);
+            return b;
+        } catch (FileNotFoundException e) {
+            logger.error(e.getMessage());
+            return null;
+        } catch (IOException e) {
+            logger.error(e.getMessage());
+            return null;
+        } finally {
+            try {
+                fis.close();
+            } catch (IOException e) {
+                logger.error(e.getMessage());
+            }
+        }
+    }
+
+    /**
+     *
+     * getCurrentRandomFileName: 根据当前时间还有随机数获取 唯一的文件名
+     *
+     * @return
+     */
+    public static String getCurrentRandomFileName() {
+        SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHms");//20160126195117
+        String currentDate = format.format(new Date());
+        Random random = new Random();
+        int rint = random.nextInt(Integer.MAX_VALUE);
+        return currentDate + rint;
+    }
+
+
+    /**
+     *
+     * getFileMB:根据byte转换成mb
+     *
+     * @param byteFile
+     * @return
+     */
+    public static String getFileMB(long byteFile) {
+        if (byteFile == 0){
+            return "0MB";
+        }
+        long mb = 1024l * 1024l;
+        return "" + byteFile / mb + "MB";
+    }
+
+
 
     public static void main(String[] args){
 

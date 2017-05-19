@@ -17,6 +17,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * im4java 使用 graphicMagick 工具类
  * Created by gary on 2017/1/1.
  */
 public class Im4JavaUtils {
@@ -70,7 +71,6 @@ public class Im4JavaUtils {
     /**
      * 命令类型
      *
-     * @author hailin0@yeah.net
      * @createDate 2016年6月5日
      */
     private enum CommandType {
