@@ -104,7 +104,7 @@ public class CsdnBrushFlow {
         int size = urlList.size();
         for(int i = 0; i < num; i++){
             int randomNum = ThreadLocalRandom.current().nextInt(0, size);
-            int randTime = ThreadLocalRandom.current().nextInt(3000, 5000);
+            int randTime = ThreadLocalRandom.current().nextInt(1000, 2000);
             String url = urlList.get(randomNum);
             try {
                 Thread.sleep(randTime);// 间隔一秒
