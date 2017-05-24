@@ -27,6 +27,7 @@ dependencies {
     compile(libraries.spring_jdbc)
     compile(libraries.spring_context)
     compile(libraries.spring_data_redis)
+    compile(libraries.jedis)
     compile(libraries.servlet_api)
     compile(libraries.jsoup)
     compile(libraries.guava)
