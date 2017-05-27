@@ -1,5 +1,8 @@
 package com.lzhenxing.javascaffold.javabase.designpattern;
 
+import com.lzhenxing.javascaffold.util.FileUtils;
+import sun.misc.ProxyGenerator;
+
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
@@ -12,6 +15,8 @@ import java.lang.reflect.Proxy;
  * @date 2017/5/23
  */
 public class ProxyPattern {
+
+    public static final String FILE_PATH = "/Users/gary/Documents/$Proxy1.class";
 
     public static void main(String[] args){
 
@@ -31,6 +36,15 @@ public class ProxyPattern {
         Subject proxySubject = (Subject) Proxy.newProxyInstance(RealSubject.class.getClassLoader(), RealSubject.class.getInterfaces(),
                 proxyHandler);
         proxySubject.leave();
+
+        System.out.println(proxySubject.getClass());
+        /**
+         * 生成代理类,可以将代理类写入文件中,然后用反编译工具查看动态生成的代理类的结构
+         * 参考: http://www.jasongj.com/design_pattern/dynamic_proxy_cglib/
+         *
+         */
+        byte[] classFile = ProxyGenerator.generateProxyClass("$Proxy1", RealSubject.class.getInterfaces());
+        FileUtils.createFile(FILE_PATH, classFile);
 
     }
 }

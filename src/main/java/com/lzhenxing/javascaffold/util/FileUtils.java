@@ -383,6 +383,26 @@ public class FileUtils {
         return "" + byteFile / mb + "MB";
     }
 
+    /**
+     * 将byte数组写入文件
+     * @param path
+     * @param content
+     * @throws IOException
+     */
+	public static void createFile(String path, byte[] content) {
+
+        try(FileOutputStream fos = new FileOutputStream(path)){
+
+            fos.write(content);
+
+        } catch (FileNotFoundException e){
+            e.printStackTrace();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+
+	}
+
 
 
     public static void main(String[] args){
@@ -401,7 +421,12 @@ public class FileUtils {
         //getFilePathList(dir, filePathList);
         //System.out.println(filePathList.toString());
         //获取后缀
-        String filePath = "/sdfsdf/sfsdf/ewfsf.jpg";
-        System.out.println(FileUtils.getFileSuffix(filePath));
+        //String filePath = "/sdfsdf/sfsdf/ewfsf.jpg";
+        //System.out.println(FileUtils.getFileSuffix(filePath));
+
+        //创建文件
+        byte[] bytes = "mysfsfs,sdfsdf".getBytes();
+        String filePath = "/Users/gary/Documents/test.txt";
+        FileUtils.createFile(filePath, bytes);
     }
 }
