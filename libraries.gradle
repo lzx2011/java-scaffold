@@ -31,6 +31,8 @@ ext{
     xmemcachedVersion                       = '2.0.0'
     gsonVersion                             = '2.8.0'
     jedisVersion                            = '2.9.0'
+    cglibVersion                            = '2.1_3'
+    aspectjVersion                          = '1.6.11'
 
 
     libraries = [
@@ -46,6 +48,7 @@ ext{
             //spring_data_jpa
             spring_data_jpa:		   	"org.springframework.data:spring-data-jpa:${springFrameworkVersion}",
 
+            //redis
             spring_data_redis:          "org.springframework.data:spring-data-redis:${springDataRedisVersion}",
             jedis:                      "redis.clients:jedis:${jedisVersion}",
 
@@ -85,7 +88,11 @@ ext{
             //cache
             xmemcached:                 "com.googlecode.xmemcached:xmemcached:${xmemcachedVersion}",
 
-            gson:                 "com.google.code.gson:gson:${gsonVersion}"
+            gson:                 "com.google.code.gson:gson:${gsonVersion}",
+            //aop
+            cglib_nodep:                 "cglib:cglib-nodep:${cglibVersion}",
+            aspectjweaver:                 "org.aspectj:aspectjweaver:${aspectjVersion}"
+
 
 
 

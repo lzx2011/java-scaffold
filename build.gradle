@@ -37,5 +37,7 @@ dependencies {
     compile(libraries.javacsv)
     compile(libraries.xmemcached)
     compile(libraries.gson)
+    compile(libraries.cglib_nodep)
+    compile(libraries.aspectjweaver)
 
 }
