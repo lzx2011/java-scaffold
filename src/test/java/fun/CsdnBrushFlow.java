@@ -191,7 +191,7 @@ public class CsdnBrushFlow {
         //getArticlUrl(1);
         //刷访问量
         visitArticle(totalUrlList(), 500);
-        //刷赞
+        //刷赞 bbbb
         //String url = "http://blog.csdn.net/revitalizing/article/details/55052856";
         //System.out.println(url.substring(url.lastIndexOf("/")+1));
 

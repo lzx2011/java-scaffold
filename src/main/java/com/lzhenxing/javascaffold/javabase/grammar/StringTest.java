@@ -70,6 +70,21 @@ public class StringTest {
         System.out.println(list.toString());
     }
 
+    @Test
+    public void stringReferenceTest(){
+        String a = "abcd";
+        String b = "abcd";
+        String c = new String("abcd");
+        String d = new String("abcd");
+        //intern()
+        //如果常量池中存在当前字符串, 就会直接返回当前字符串. 如果常量池中没有此字符串, 会将此字符串放入常量池中后, 再返回
+        String e = new String("abcd").intern();
+        String f = new String("abcd").intern();
+        System.out.println(a == b);
+        System.out.println(c == d);
+        System.out.println(e == f);  //true
+    }
+
     public static void main(String[] args){
         String string;
         Integer i;

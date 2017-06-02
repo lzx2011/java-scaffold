@@ -11,6 +11,10 @@ import java.util.Map;
 
 /**
  * @author yihua.huang@dianping.com
+ *
+ * tiny-spring 分析
+ * https://www.zybuluo.com/dugu9sword/note/382745
+ *
  */
 public class BeanFactoryTest {
 
