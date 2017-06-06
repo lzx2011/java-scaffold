@@ -6,47 +6,47 @@ package com.lzhenxing.javascaffold.javabase.thread;
 public class SimpleThreadPractice {
 
 	public static void main(String[] args) {
-		Mythread mythread = new Mythread();
+        MyThread mythread = new MyThread();
 		mythread.start();
 
 		new Thread(new TestThread()).start();
 	}
 
-//	private static class Runner implements Runnable {
-//		private volatile boolean on = true;
-//
-//		public void run() {
-//            while (on && !Thread.currentThread().isInterrupted()){
-//                try {
-//                    queue.put(i); //业务阻塞操作
-//                } catch (InterruptedException e) {
-//                //该代码还被上层调用时，抛出 or 恢复中断状态
-//                    throw e;
-//                    或 Thread.currentThread().interrupt();
-//
-//                //该代码不再被上层调用
-//                    break;
-//                }
-//            }
-//        }
-//
-//		public void cancel() {
-//			on = false;
-//			Thread.currentThread().interrupt(); // 同时调用中断
-//		}
-//	}
-}
+	private static class Runner implements Runnable {
 
-class Mythread extends Thread {
+		private volatile boolean on = true;
 
-	public void run() {
-		System.out.println(Thread.currentThread() + " extends Thread");
+		public void run() {
+            while (on && !Thread.currentThread().isInterrupted()){
+                try {
+                    Thread.sleep(2000);
+                    System.out.println("sleeping");
+                } catch (InterruptedException e) {
+
+                }
+            }
+        }
+
+		public void cancel() {
+			on = false;
+			Thread.currentThread().interrupt(); // 同时调用中断
+		}
 	}
-}
 
-class TestThread implements Runnable {
+	static class MyThread extends Thread {
 
-	public void run() {
-		System.out.println(Thread.currentThread() + " implements Runnable");
+		public void run() {
+			System.out.println(Thread.currentThread() + " extends Thread");
+		}
 	}
+
+	static class TestThread implements Runnable {
+
+		public void run() {
+			System.out.println(Thread.currentThread() + " implements Runnable");
+		}
+	}
+
 }
+
+

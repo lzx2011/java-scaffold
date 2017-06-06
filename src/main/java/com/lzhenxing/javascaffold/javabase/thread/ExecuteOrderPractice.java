@@ -5,6 +5,8 @@ import java.util.concurrent.Executors;
 
 /**
  * Created by gary on 2017/3/8.
+ *
+ * 使用线程池实现其他线程执行完后,再执行其他工作
  */
 public class ExecuteOrderPractice {
 

@@ -9,6 +9,22 @@ package com.lzhenxing.javascaffold.javabase.thread;
  */
 public class ThreadLocalPractice {
 
+    static class MyThread implements Runnable{
+
+        private ThreadLocal<Integer> threadLocal = new ThreadLocal<>();
+
+        public void run(){
+            threadLocal.set((int)(Math.random()*1000));
+
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println(Thread.currentThread().getName() + ": " + threadLocal.get());
+        }
+    }
+
     public static void main(String[] args){
 
         new Thread(new MyThread()).start();
@@ -16,18 +32,4 @@ public class ThreadLocalPractice {
     }
 }
 
-class MyThread implements Runnable{
 
-    private ThreadLocal<Integer> threadLocal = new ThreadLocal<>();
-
-    public void run(){
-        threadLocal.set((int)(Math.random()*1000));
-
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        System.out.println(Thread.currentThread().getName() + ": " + threadLocal.get());
-    }
-}

@@ -9,19 +9,20 @@ package com.lzhenxing.javascaffold.javabase.thread;
  */
 public class LockPractice {
 
+    class UnReentrant{
+        //Lock lock = new Lock();
+        //public void outer(){
+        //    lock.lock();
+        //    inner();
+        //    lock.unlock();
+        //}
+        //public void inner(){
+        //    lock.lock();
+        //    //do something
+        //    lock.unlock();
+        //}
+    }
+
 
 }
 
-class UnReentrant{
-    //Lock lock = new Lock();
-    //public void outer(){
-    //    lock.lock();
-    //    inner();
-    //    lock.unlock();
-    //}
-    //public void inner(){
-    //    lock.lock();
-    //    //do something
-    //    lock.unlock();
-    //}
-}

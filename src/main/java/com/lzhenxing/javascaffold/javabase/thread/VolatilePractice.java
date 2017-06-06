@@ -26,6 +26,19 @@ public class VolatilePractice {
         i++;  ////复合（多个）volatile变量的读/写不具有原子性
     }
 
+    static class VolatileAtomicity implements Runnable{
+
+        private VolatilePractice volatilePractice;
+
+        public VolatileAtomicity(VolatilePractice volatilePractice){
+            this.volatilePractice = volatilePractice;
+        }
+
+        public void run(){
+            volatilePractice.getAndIncrement();
+        }
+    }
+
     public static void main(String[] args){
 
         VolatilePractice volatilePractice = new VolatilePractice();
@@ -46,15 +59,4 @@ public class VolatilePractice {
     }
 }
 
-class VolatileAtomicity implements Runnable{
 
-    private VolatilePractice volatilePractice;
-
-    public VolatileAtomicity(VolatilePractice volatilePractice){
-        this.volatilePractice = volatilePractice;
-    }
-
-    public void run(){
-        volatilePractice.getAndIncrement();
-    }
-}

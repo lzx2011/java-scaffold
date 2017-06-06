@@ -8,8 +8,10 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * Created by gary on 2017/3/7.
+ *
+ * CountDownLatch: 一组操作等待另一组操作完成后再执行
  */
-public class OrderThreadExecute {
+public class CountDownLatchPractice {
 
 	class Worker implements Runnable {
 		private CountDownLatch downLatch;
@@ -60,7 +62,7 @@ public class OrderThreadExecute {
 		ExecutorService executor = Executors.newCachedThreadPool();
 		CountDownLatch latch = new CountDownLatch(3);
 
-		OrderThreadExecute orderThread = new OrderThreadExecute();
+		CountDownLatchPractice orderThread = new CountDownLatchPractice();
 
 		Worker w1 = orderThread.new Worker(latch, "张三");
 		Worker w2 = orderThread.new Worker(latch, "李四");

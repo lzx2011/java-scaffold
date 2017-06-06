@@ -7,6 +7,14 @@ import java.util.concurrent.*;
  */
 public class ThreadCallablePractice {
 
+    class Task implements Callable<String>{
+
+        public String call(){
+            System.out.println(Thread.currentThread().getName() + " is working");
+            return "callable result";
+        }
+    }
+
     public void callableTest() throws Exception{
 
         ExecutorService executorService = Executors.newFixedThreadPool(3);
@@ -31,12 +39,8 @@ public class ThreadCallablePractice {
         practice.futureTaskTest();
 
     }
+
+
 }
 
-class Task implements Callable<String>{
 
-    public String call(){
-        System.out.println(Thread.currentThread().getName() + " is working");
-        return "callable result";
-    }
-}
