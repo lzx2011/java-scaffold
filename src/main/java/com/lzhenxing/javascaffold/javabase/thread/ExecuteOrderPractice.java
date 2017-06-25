@@ -12,6 +12,7 @@ public class ExecuteOrderPractice {
 
     public void orderPractice(){
         ExecutorService executorService = Executors.newFixedThreadPool(3);
+        long start = System.currentTimeMillis();
         for(int i = 0; i < 5; i++){
             executorService.execute(new Runnable() {
                 @Override
@@ -31,13 +32,15 @@ public class ExecuteOrderPractice {
         while(true){
             if(executorService.isTerminated()){
                 System.out.println("Finally do something ");
+                long end = System.currentTimeMillis();
+                System.out.println("用时: " + (end - start) + "ms");
                 break;
             }
-            try {
-                Thread.sleep(200);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            //try {
+            //    Thread.sleep(200);
+            //} catch (InterruptedException e) {
+            //    e.printStackTrace();
+            //}
         }
     }
 

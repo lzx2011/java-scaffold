@@ -15,7 +15,7 @@ import java.util.List;
 
 /**
  * ClassName: ImageScrollShow <br/>
- * Function: <br/>
+ * Function: 图片滚动显示<br/>
  *
  * @author gary.liu
  * @date 2017/4/30
