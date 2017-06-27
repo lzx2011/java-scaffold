@@ -6,9 +6,11 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 /**
+ *
+ * 定时任务线程池
  * Created by gary on 2017/3/1.
  */
-public class ThreadPoolPractice {
+public class ScheduledThreadPoolPractice {
 
     public static void fixThreadTest(){
         ExecutorService fixedThreadPool = Executors.newFixedThreadPool(3);
@@ -41,7 +43,7 @@ public class ThreadPoolPractice {
 
     public static void main(String[] args){
         //fixThreadTest();
-        ThreadPoolPractice practice = new ThreadPoolPractice();
+        ScheduledThreadPoolPractice practice = new ScheduledThreadPoolPractice();
         practice.cronThread();
     }
 
