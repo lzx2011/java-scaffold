@@ -28,7 +28,7 @@ import java.util.List;
 
 /**
  * ClassName: ExcelToolsUtil <br/>
- * Function: <br/>
+ * Function: 从页面导入导出,对基本导入导出封装<br/>
  *
  * @author gary.liu
  * @date 2017/4/17
@@ -65,7 +65,7 @@ public class ExcelToolsUtil {
             }
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
-            throw new Exception("批量导入商品，excel格式不正确");
+            throw new Exception("批量导入数据，excel格式不正确");
         } finally {
             if (stream != null) {
                 stream.close();
@@ -560,6 +560,7 @@ public class ExcelToolsUtil {
     public static void saveExcel(String destPath,File excelFile,List<String> sheetNames, List<String[]> titles,
                                  List<String[]> data,boolean isIgnoreFirstRow) throws IOException, InvalidFormatException {
         File destFile = new File(destPath);
+        //为了保证导出的目录不重复
         if (destFile.exists()){
             destFile.delete();
         }

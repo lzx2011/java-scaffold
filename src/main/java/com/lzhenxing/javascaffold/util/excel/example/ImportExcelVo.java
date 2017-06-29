@@ -6,12 +6,12 @@ import com.vip.common.excelmapping.enums.ParseType;
 
 /**
  * ClassName: ImportExcelVo <br/>
- * Function: 注意 sheet <br/>
+ * Function: 注意 sheet,sheetName 不填默认为第一个sheet <br/>
  *
  * @author gary.liu
  * @date 2017/5/2
  */
-@ExcelObjectMappingByTableHead(sheetName = "Sheet1", parseType = ParseType.ROW, headPosition = 1, headStart = 1, dataStart = 2)
+@ExcelObjectMappingByTableHead(sheetName = "", parseType = ParseType.ROW, headPosition = 1, headStart = 1, dataStart = 2)
 public class ImportExcelVo {
 
     @ExcelFieldMappingByHeadName(headName = "id")

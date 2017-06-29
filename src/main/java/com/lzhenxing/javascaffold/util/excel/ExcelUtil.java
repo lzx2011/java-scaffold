@@ -30,15 +30,17 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * ClassName: ExcelUtil <br/>
- * Function: <br/>
+ * Function: 基本导入导出功能<br/>
  *
  * @author gary.liu
  * @date 2017/4/17
  */
 public class ExcelUtil {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(ExcelUtil.class);
+
     private SSFHelper hssfHelper;
     private Map<String, ExcelMappingInfo> excelMappingInfoMapCache;
-    private static final Logger LOGGER = LoggerFactory.getLogger(ExcelUtil.class);
 
     public ExcelUtil() {
         hssfHelper = new SSFHelper();
