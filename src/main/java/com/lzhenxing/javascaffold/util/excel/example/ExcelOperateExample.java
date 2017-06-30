@@ -1,9 +1,8 @@
 package com.lzhenxing.javascaffold.util.excel.example;
 
 import com.lzhenxing.javascaffold.util.ListUtils;
-import com.lzhenxing.javascaffold.util.excel.ExcelToolsUtil;
 import com.lzhenxing.javascaffold.util.excel.ExcelUtil;
-import com.vip.common.excelmapping.enums.ExcelFileType;
+import com.lzhenxing.javascaffold.util.exceljar.enums.ExcelFileType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -106,11 +105,11 @@ public class ExcelOperateExample {
 
     public static void main(String[] args){
         //解析excel示例
-        //String fileName = "parseTest.xlsx";
-        //parseExcel(fileName);
+        String fileName = "parseTest.xlsx";
+        parseExcel(fileName);
 
         //导出 excel 示例
-        exportExcel();
+        //exportExcel();
 
     }
 

@@ -1,8 +1,9 @@
 package com.lzhenxing.javascaffold.util.excel.example;
 
-import com.vip.common.excelmapping.annotations.ExcelFieldMappingByHeadName;
-import com.vip.common.excelmapping.annotations.ExcelObjectMappingByTableHead;
-import com.vip.common.excelmapping.enums.ParseType;
+
+import com.lzhenxing.javascaffold.util.exceljar.annotations.ExcelFieldMappingByHeadName;
+import com.lzhenxing.javascaffold.util.exceljar.annotations.ExcelObjectMappingByTableHead;
+import com.lzhenxing.javascaffold.util.exceljar.enums.ParseType;
 
 /**
  * ClassName: ImportExcelVo <br/>

@@ -4,7 +4,7 @@ package com.lzhenxing.javascaffold.util.excel;
 import com.csvreader.CsvReader;
 import com.csvreader.CsvWriter;
 import com.lzhenxing.javascaffold.util.ListUtils;
-import com.vip.common.excelmapping.enums.ExcelFileType;
+import com.lzhenxing.javascaffold.util.exceljar.enums.ExcelFileType;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;

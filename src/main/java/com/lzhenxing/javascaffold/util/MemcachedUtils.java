@@ -244,7 +244,6 @@ public class MemcachedUtils {
         return (String.valueOf(species)+"_"+id).replaceAll("　", "+").replaceAll(" ", "+").replaceAll("\n", "_");
     }
 
-    // 注意该类型 需和 osp-category-publish.api.vip.com 保持一致
     public enum Species {
         CATEGORY_STANDARD(0); // 分类属性标准化 key:categoryid + brandid +customoption  value: optionid
 

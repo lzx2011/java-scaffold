@@ -1,13 +1,13 @@
 package com.lzhenxing.javascaffold.util.excel;
 
-import com.vip.common.excelmapping.annotations.*;
-import com.vip.common.excelmapping.enums.ExcelFileType;
-import com.vip.common.excelmapping.enums.ExcelMappingType;
-import com.vip.common.excelmapping.enums.ParseType;
-import com.vip.common.excelmapping.exception.ExcelParsingException;
-import com.vip.common.excelmapping.helper.SSFHelper;
-import com.vip.common.excelmapping.model.ExcelFieldMappingInfo;
-import com.vip.common.excelmapping.model.ExcelMappingInfo;
+import com.lzhenxing.javascaffold.util.exceljar.annotations.*;
+import com.lzhenxing.javascaffold.util.exceljar.enums.ExcelFileType;
+import com.lzhenxing.javascaffold.util.exceljar.enums.ExcelMappingType;
+import com.lzhenxing.javascaffold.util.exceljar.enums.ParseType;
+import com.lzhenxing.javascaffold.util.exceljar.exception.ExcelParsingException;
+import com.lzhenxing.javascaffold.util.exceljar.helper.SSFHelper;
+import com.lzhenxing.javascaffold.util.exceljar.model.ExcelFieldMappingInfo;
+import com.lzhenxing.javascaffold.util.exceljar.model.ExcelMappingInfo;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.hssf.util.HSSFColor;
