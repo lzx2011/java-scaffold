@@ -20,6 +20,14 @@ public class RedisTest {
 
         System.out.println(RedisFactoryService.get("foo"));
 
+        String ellipsisValue = "我买了才戴，可是戴一天就坏了……请问这个事、我怎么联系，怎么给我处理啊";
+        String ellipsisKey = "ellipsis";
+        String slashKey = "slash";
+        String slashValue = "dadaf\"daf\\dad";
+        RedisFactoryService.set(ellipsisKey, ellipsisValue, 3600);
+        System.out.print(RedisFactoryService.get(ellipsisKey));
+        //System.in.close();
+
     }
 
 }
