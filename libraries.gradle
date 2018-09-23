@@ -32,6 +32,9 @@ ext{
     jedisVersion                            = '2.9.0'
     cglibVersion                            = '2.1_3'
     aspectjVersion                          = '1.6.11'
+    aliyunOpenSearchVersion                 = '3.1.3'
+    geccoVersion                            = '1.2.8'
+    lombokVersion                           = '1.14.8'
 
 
     libraries = [
@@ -62,7 +65,7 @@ ext{
 
             //druid
             druid:						"com.alibaba:druid:${druidVersion}",
-            fastjson:						"com.alibaba:fastjson:${fastjsonVersion}",
+            fastjson:					"com.alibaba:fastjson:${fastjsonVersion}",
 
             //apache commons
             commons_lang3:				"org.apache.commons:commons-lang3:${commonsLang3Version}",
@@ -70,7 +73,7 @@ ext{
 
             httpclient:					"org.apache.httpcomponents:httpclient:${httpclientVersion}",
 
-            im4java:			"org.im4java:im4java:${im4javaVersion}",
+            im4java:			        "org.im4java:im4java:${im4javaVersion}",
 
             //unit test
             spring_test:			   	"org.springframework:spring-test:${springFrameworkVersion}",
@@ -86,14 +89,16 @@ ext{
             //cache
             xmemcached:                 "com.googlecode.xmemcached:xmemcached:${xmemcachedVersion}",
 
-            gson:                 "com.google.code.gson:gson:${gsonVersion}",
+            gson:                       "com.google.code.gson:gson:${gsonVersion}",
             //aop
             cglib_nodep:                 "cglib:cglib-nodep:${cglibVersion}",
-            aspectjweaver:                 "org.aspectj:aspectjweaver:${aspectjVersion}"
-
-
-
-
+            aspectjweaver:               "org.aspectj:aspectjweaver:${aspectjVersion}",
+            aliyun_open_search:          "com.aliyun.opensearch:aliyun-sdk-opensearch:${aliyunOpenSearchVersion}",
+            //≈¿≥Ê
+            gecco:               "com.geccocrawler:gecco:${geccoVersion}",
+            gecco_spring:              "com.geccocrawler:gecco-spring:${geccoVersion}",
+            gecco_htmlunit:               "com.geccocrawler:gecco-htmlunit:${geccoVersion}",
+            lombok:             "org.projectlombok:lombok:${lombokVersion}"
 
     ]
 

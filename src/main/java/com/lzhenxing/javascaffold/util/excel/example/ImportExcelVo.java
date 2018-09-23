@@ -2,6 +2,7 @@ package com.lzhenxing.javascaffold.util.excel.example;
 
 
 import com.lzhenxing.javascaffold.util.exceljar.annotations.ExcelFieldMappingByHeadName;
+import com.lzhenxing.javascaffold.util.exceljar.annotations.ExcelFieldMappingByPosition;
 import com.lzhenxing.javascaffold.util.exceljar.annotations.ExcelObjectMappingByTableHead;
 import com.lzhenxing.javascaffold.util.exceljar.enums.ParseType;
 
@@ -16,15 +17,19 @@ import com.lzhenxing.javascaffold.util.exceljar.enums.ParseType;
 public class ImportExcelVo {
 
     @ExcelFieldMappingByHeadName(headName = "id")
+    //@ExcelFieldMappingByPosition(position = 1)
     private String id;
 
     @ExcelFieldMappingByHeadName(headName = "name")
+    //@ExcelFieldMappingByPosition(position = 2)
     private String name;
 
     @ExcelFieldMappingByHeadName(headName = "score")
+    //@ExcelFieldMappingByPosition(position = 3)
     private String score;
 
     @ExcelFieldMappingByHeadName(headName = "time")
+    //@ExcelFieldMappingByPosition(position = 4)
     private String time;
 
     public String getId() {

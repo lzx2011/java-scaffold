@@ -1,4 +1,4 @@
-package com.lzhenxing.javascaffold.util;
+package com.lzhenxing.javascaffold.util.json;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.TypeReference;

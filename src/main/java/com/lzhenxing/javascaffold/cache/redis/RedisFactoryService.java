@@ -1,7 +1,7 @@
 package com.lzhenxing.javascaffold.cache.redis;
 
 import com.alibaba.fastjson.TypeReference;
-import com.lzhenxing.javascaffold.util.FastJsonUtil;
+import com.lzhenxing.javascaffold.util.json.FastJsonUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

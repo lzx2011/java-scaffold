@@ -38,6 +38,14 @@
         </property>
     </bean>
 
+    <!-- aliyun open search config -->
+    <bean id="myOpenSearchService" class="com.lzhenxing.javascaffold.opensearch.MyOpenSearchService" init-method="init">
+        <property name="appName" value="${aliyun.appName}"/>
+        <property name="accesskey" value="${aliyun.accesskey}"/>
+        <property name="secret" value="${aliyun.secret}"/>
+        <property name="host" value="${aliyun.host}"/>
+    </bean>
+
 
     <!--<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">-->
         <!--<property name="basePackage" value="com.lzhenxing.**.repository" />-->

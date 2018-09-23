@@ -276,4 +276,21 @@ public class StringUtil {
 		return str;
 	}
 
+	/**
+	 * 判断是否字符串为繁体字符
+	 *
+	 * @return
+	 */
+	public static boolean isFanTi(String str) {
+		try {
+			if (!str.equals(new String(str.getBytes("GB2312"), "GB2312"))) {
+				return true;
+			} else {
+				return false;
+			}
+		} catch (Exception exception3) {
+			return false;
+		}
+	}
+
 }

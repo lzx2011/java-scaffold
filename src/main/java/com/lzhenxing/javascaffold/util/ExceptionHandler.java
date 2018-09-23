@@ -1,5 +1,6 @@
 package com.lzhenxing.javascaffold.util;
 
+import com.lzhenxing.javascaffold.util.json.FastJsonUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.HandlerExceptionResolver;

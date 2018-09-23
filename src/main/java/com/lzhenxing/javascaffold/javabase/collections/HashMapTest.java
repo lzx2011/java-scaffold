@@ -1,5 +1,6 @@
 package com.lzhenxing.javascaffold.javabase.collections;
 
+import com.google.common.collect.Maps;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -42,8 +43,36 @@ public class HashMapTest {
 
     }
 
-    public static void main(String[] args){
-        putTest();
+    @Test
+    public void addMap(){
+        Map<Long, Long> patch = Maps.newHashMap();
+        patch.put(1L,2L);
+        patch.put(3L,2L);
+        Map<Long, Long> target = Maps.newHashMap();
+        patch.put(1L,1L);
+        patch.put(2L,2L);
+        patch.forEach(target::putIfAbsent);
 
+        //use guava
+        // Add everything in map1 not in map2 to map2
+        target.putAll(Maps.difference(patch, target).entriesOnlyOnLeft());
+        System.out.println(target);
     }
+
+    @Test
+    public void mapPrac(){
+        Map<String, Object> map = Maps.newHashMap();
+        //map.put("code", -1);
+        if(map.containsKey("code")){
+            System.out.println("true");
+        }
+    }
+
+    public static void main(String[] args){
+        //putTest();
+        //Long.parseLong(null);
+        System.out.println(Double.parseDouble(""));
+    }
+
+
 }

@@ -280,7 +280,8 @@ public final class HttpClientUtils {
 				result += line;
 			}
 		} catch (Exception e) {
-			result = "{\"status\":-1,\"result\":\"\",\"msg\":\"发送 POST 请求出现异常！\"}";
+			//result = "{\"status\":-1,\"result\":\"\",\"msg\":\"发送 POST 请求出现异常！\"}";
+			result = "{\"status\":-1}";
 		}
 		// 使用finally块来关闭输出流、输入流
 		finally {
@@ -312,8 +313,10 @@ public final class HttpClientUtils {
 	}
 
 	public static void main(String[] args){
-		String url = "";
+		String url = "http://hotel-tripx-data.cn-shanghai.oss-internal.aliyun-inc.com/ChineseDivision/chineseDivision-1489796403270";
 		//System.out.println(sendHead(url));
+		System.out.println(get(url, null, 100000));
+
 	}
 
 	

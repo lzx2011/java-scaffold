@@ -37,7 +37,8 @@ public class UrlUtils {
 
     public static void main(String[] args){
         //String url = "//baidu.com/index.html";
-        String url= "//imsfsdf.com/upload/10353-ece4-4e4f-9600-989b35c9b707_t.jpg";
+        //String url= "http://imsfsdf.com/upload/10353-ece4-4e4f-9600-989b35c9b707_t.jpg";
+        String url= "https://img.alicdn.com/imgextra/i4/2255708913/TB2NF_1cpXXXXb3XXXXXXXXXXXX_!!2255708913.jpg";
 
         System.out.println(fixUrl(url));
     }

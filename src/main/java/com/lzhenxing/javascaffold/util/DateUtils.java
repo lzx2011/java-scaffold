@@ -1,5 +1,6 @@
 package com.lzhenxing.javascaffold.util;
 
+import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -166,6 +167,20 @@ public class DateUtils {
         calendar.setTime(date);
         return calendar.getTimeInMillis();
     }
+
+    //时间相互转换
+    public static void dateConverter(){
+
+        //timestamp to date
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        System.out.println(new Date(timestamp.getTime()));
+
+        //long to date
+        long timeLong = 1519747200000L;
+        System.out.println(new Date(timeLong));
+
+    }
+
 
     public static void main(String[] args){
 //        System.out.println(TimeUtils.getTimeString(TimeUtils.getDate()));

@@ -29,15 +29,33 @@ public class TryCatchTest {
     //
 	//}
 
+	public static void continueTest(){
+		for(int i = 0; i < 10; i++){
+
+            if(i > 5){
+                try{
+                    Integer.parseInt(null);
+                    //throw new RuntimeException("test");
+                    continue;
+                } catch (Exception e){
+                    System.out.println("excepiton occur");
+                    //continue;
+                }
+            }
+            System.out.println(i);
+        }
+	}
+
 	public static void main(String[] args) {
 		//System.out.println("OUTPUT one");
 		//System.out.println("OUTPUT two");
 		//System.err.println("ERROR 1");
 		//System.err.println("ERROR 2");
-		for(int i = 0; i < args.length; i++)
-		{
-			System.out.printf("args[%d] = %s.", i, args[i]);
-		}
+		//for(int i = 0; i < args.length; i++)
+		//{
+		//	System.out.printf("args[%d] = %s.", i, args[i]);
+		//}
+		continueTest();
 	}
 }
 

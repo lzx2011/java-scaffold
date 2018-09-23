@@ -1,6 +1,8 @@
 package com.lzhenxing.javascaffold.util;
 
+import com.lzhenxing.javascaffold.util.json.FastJsonUtil;
 import org.apache.commons.lang3.StringUtils;
+import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.multipart.MultipartFile;
@@ -400,10 +402,37 @@ public class FileUtils {
         } catch (IOException e){
             e.printStackTrace();
         }
-
 	}
 
+	@Test
+	public void readFromFile(){
+        String filePath = "/Users/gary.liu/Documents/internationalShids.txt";
+        byte[] fileContent = getFileBytes(new File(filePath));
+        String content = new String(fileContent);
+        List<Integer> list = FastJsonUtil.json2Bean(content, List.class);
+        System.out.println(list.size());
+        for(int i = 0; i < list.size(); i++){
+            if(list.get(i) == 51541238){
+                System.out.println(i + ", " + list.get(i));
+            }
+        }
+        //System.out.println(list.get(34298));
+    }
 
+
+    public static void writeFile(String path, byte[] content) {
+        try{
+            FileOutputStream fos = new FileOutputStream(path);
+            fos.write(content);
+            fos.flush();
+            fos.close();
+
+        } catch (FileNotFoundException e){
+            e.printStackTrace();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+    }
 
     public static void main(String[] args){
 
@@ -426,7 +455,7 @@ public class FileUtils {
 
         //创建文件
         byte[] bytes = "mysfsfs,sdfsdf".getBytes();
-        String filePath = "/Users/gary/Documents/test.txt";
-        FileUtils.createFile(filePath, bytes);
+        String filePath = "/Users/gary.liu/Documents/test.txt";
+        writeFile(filePath, bytes);
     }
 }

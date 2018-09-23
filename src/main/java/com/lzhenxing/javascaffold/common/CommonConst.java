@@ -14,4 +14,6 @@ public class CommonConst {
     public final static String FTP_USER_NAME = "";
     public final static String FTP_PASSWORD = "";
 
+    public static final String ATTRIBUTE_YES = "1";
+
 }

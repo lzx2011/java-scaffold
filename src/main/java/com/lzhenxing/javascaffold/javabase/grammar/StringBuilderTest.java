@@ -18,4 +18,6 @@ public class StringBuilderTest {
         builder.append(str);
         System.out.println(builder.toString());  //输出 111null
     }
+
+
 }
