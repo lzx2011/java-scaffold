@@ -1,6 +1,6 @@
 package com.lzhenxing.javascaffold.util;
 
-import com.lzhenxing.javascaffold.common.CommonConst;
+import com.lzhenxing.javascaffold.common.CommonConstant;
 import org.apache.http.*;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
@@ -251,7 +251,7 @@ public final class HttpClientUtils {
 			HttpURLConnection conn = null;
 			if(isProxy){//使用代理模式
 				@SuppressWarnings("static-access")
-				Proxy proxy = new Proxy(Proxy.Type.DIRECT.HTTP, new InetSocketAddress(CommonConst.PROXY_IP, Integer.valueOf(CommonConst.PROXY_PORT)));
+				Proxy proxy = new Proxy(Proxy.Type.DIRECT.HTTP, new InetSocketAddress(CommonConstant.PROXY_IP, Integer.valueOf(CommonConstant.PROXY_PORT)));
 				conn = (HttpURLConnection) realUrl.openConnection(proxy);
 			}else{
 				conn = (HttpURLConnection) realUrl.openConnection();

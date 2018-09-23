@@ -34,16 +34,19 @@ public class CrawlerTest {
         }
     }
 
-    public static String postOk(String lotteryNo,String Multiunm ,String minhit,String maxhit,String type ,String matches,String absmatche,String passTypestr ) throws IOException{
+    public static String postOk(String lotteryNo, String Multiunm, String minhit, String maxhit, String type,
+                                String matches, String absmatche, String passTypestr) throws IOException {
         //获取请求连接
-        Connection con = Jsoup.connect("http://www.okooo.com/Lottery06/SportterySoccer/ajax.php?action=getLotteryBonus").userAgent("Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.64 Safari/537.31");
+        Connection con = Jsoup.connect("http://www.okooo.com/Lottery06/SportterySoccer/ajax.php?action=getLotteryBonus")
+            .userAgent(
+                "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.64 Safari/537.31");
         //发送参数
         con.data("LotteryNo", "2017-03-08");
-        con.data("MultiNum",Multiunm);
+        con.data("MultiNum", Multiunm);
         con.data("MinHit", minhit);
         con.data("MaxHit", maxhit);
-        con.data("type",type);
-        con.data("Matches",matches);
+        con.data("type", type);
+        con.data("Matches", matches);
         con.data("AbsMatches", absmatche);
         con.data("PassTypeStr", passTypestr);
         Document doc = con.post();
@@ -52,9 +55,15 @@ public class CrawlerTest {
         return doc.toString();
     }
 
-    public static String postOk1(String lotteryNo,String Multiunm ,String minhit,String maxhit,String type ,String matches,String absmatche,String passTypestr ) throws IOException{
+    public static String postOk1(String lotteryNo, String Multiunm, String minhit, String maxhit, String type,
+                                 String matches, String absmatche, String passTypestr) throws IOException {
         //获取请求连接
-        Connection con = Jsoup.connect("http://hotels.ctrip.com/international/Tool/AjaxHotelRoomInfoDetailPart.aspx").userAgent("Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.64 Safari/537.31").ignoreContentType(true);
+        Connection con = Jsoup.connect("http://hotels.ctrip.com/international/Tool/AjaxHotelRoomInfoDetailPart.aspx")
+            .userAgent(
+                "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.64 Safari/537.31")
+
+
+            .ignoreContentType(true);
         //发送参数
         //con.data("LotteryNo", "2017-03-08");
         //con.data("MultiNum",Multiunm);

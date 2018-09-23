@@ -3,7 +3,7 @@ package com.lzhenxing.javascaffold.common;
 /**
  * Created by gary on 2017/3/13.
  */
-public class CommonConst {
+public class CommonConstant {
 
     public final static String PROXY_IP = "";
     public final static String PROXY_PORT = "";

@@ -4,7 +4,7 @@ package com.lzhenxing.javascaffold.util;
  * Created by gary on 16/8/20.
  */
 
-import com.lzhenxing.javascaffold.common.CommonConst;
+import com.lzhenxing.javascaffold.common.CommonConstant;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
@@ -44,8 +44,8 @@ public class FTPUtils {
 		Download_New_Failed; // 全新下载文件失败
 	}
 
-	private static FTPUtils ftpUtils = new FTPUtils(CommonConst.FTP_HOST_NAME, CommonConst.FTP_PROT,
-			CommonConst.FTP_USER_NAME, CommonConst.FTP_PASSWORD);
+	private static FTPUtils ftpUtils = new FTPUtils(CommonConstant.FTP_HOST_NAME, CommonConstant.FTP_PROT,
+			CommonConstant.FTP_USER_NAME, CommonConstant.FTP_PASSWORD);
 
 	public FTPClient ftpClient = new FTPClient();
 	private String ftpURL, username, pwd, file1, file2;
