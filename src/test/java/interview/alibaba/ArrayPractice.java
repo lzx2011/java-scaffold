@@ -15,7 +15,7 @@ import java.util.List;
  * @author gary.liu
  * @date 2017/6/13
  */
-public class ArrayTest {
+public class ArrayPractice {
 
     public static boolean isSeq(List list){
 
