@@ -27,7 +27,7 @@ public class ImageCheckUtils {
     private static Logger log = LoggerFactory.getLogger(ImageCheckUtils.class);
 
     /**
-     * Í¼Æ¬µÄ×îÐ¡¿í¶È£¬×îÐ¡¸ß¶È£¬×î´ó¿í¶È£¬×î´ó¸ß¶È
+     * Í¼Æ¬ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½È£ï¿½ï¿½ï¿½Ð¡ï¿½ß¶È£ï¿½ï¿½ï¿½ï¿½ï¿½È£ï¿½ï¿½ï¿½ï¿½ß¶ï¿½
      */
     private static final int[] picSize = {300, 225, 1200,1200};
 
@@ -36,8 +36,8 @@ public class ImageCheckUtils {
     private static int MAX_IMAGE_SIZE = 5;
 
     /**
-     * check pic´óÐ¡
-     * @param image Í¼Æ¬¶ÔÏó
+     * check picï¿½ï¿½Ð¡
+     * @param image Í¼Æ¬ï¿½ï¿½ï¿½ï¿½
      * @return
      */
     public static boolean checkPicSize(BufferedImage image){
@@ -47,7 +47,7 @@ public class ImageCheckUtils {
 
         int width = image.getWidth();
         int height = image.getHeight();
-        //        //È¥³ý´óÍ¼Æ¬ÏÞÖÆ.
+        //        //È¥ï¿½ï¿½ï¿½ï¿½Í¼Æ¬ï¿½ï¿½ï¿½ï¿½.
         if (width < picSize[0] || height < picSize[1]) {
             return false;
         }
@@ -75,7 +75,7 @@ public class ImageCheckUtils {
     }
 
     /**
-     * ÊÇ·ñ»¹ÒªÐ£Ñé´óÐ¡Ð´
+     * ï¿½Ç·ï¿½ÒªÐ£ï¿½ï¿½ï¿½Ð¡Ð´
      * @param url
      * @return
      */
@@ -94,8 +94,7 @@ public class ImageCheckUtils {
 
     public static void main(String[] args) throws Exception{
 
-        //String url = "https://img.alicdn.com/imgextra/i4/2255708913/TB2NF_1cpXXXXb3XXXXXXXXXXXX_!!2255708913.jpg";
-        String url = "http://img.alicdn.com/bao/uploaded/i1/TB1AQNWa7CWBuNjy0FaqkJUlXXa_020918.jpg";
+        String url = "http://img.xxx.com/bao/uploaded/i1/020918.jpg";
         System.out.println(checkImageSuffix(url));
         System.out.println(checkImageSize(url));
         InputStream murl = new URL(url).openStream();

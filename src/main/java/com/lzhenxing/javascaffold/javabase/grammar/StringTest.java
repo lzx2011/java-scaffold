@@ -113,21 +113,6 @@ public class StringTest {
         //System.out.println(object.toString());
     }
 
-    public static void jsonParseTest(){
-        //String pics = "[{\"ismain\":\"true\",\"url\":\"https://img.alicdn"
-        //    + ".com/imgextra/i4/2255708913/TB2NF_1cpXXXXb3XXXXXXXXXXXX_!!2255708913.jpg\",\"attribute\":\"普通图\","
-        //    + "\"type\":\"其他\"}]";
-        String pics = "[{\"ismain\":\"true\",\"url\":\"https://img.alicdn"
-            + ".com/imgextra/i4/2255708913/TB2NF_1cpXXXXb3XXXXXXXXXXXX_!!2255708913.jpg\",\"attribute\":\"普通图\","
-            + "\"type\":\"其他\",\"fingerpriint\":\"34534534345345\"},{\"ismain\":\"true\",\"url\":\"https://img.alicdn"
-            + ".com/imgextra/i4/2255708913/TB2NF_1cpXXXXb3XXXXXXXXXXXX_!!2255708913.jpg\",\"attribute\":\"普通图\","
-            + "\"type\":\"其他\",\"fingerpriint\":\"3453453411231111\"}]";
-
-        List<PictureDO> pictureDOS = FastJsonUtil.json2BeanList(pics, PictureDO.class);
-        System.out.println(JSON.toJSONString(pictureDOS));
-
-    }
-
     @Test
     public void lineNum(){
         //String policy = "儿童及加床政策\t\n"
