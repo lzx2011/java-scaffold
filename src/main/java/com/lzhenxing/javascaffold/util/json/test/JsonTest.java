@@ -6,10 +6,8 @@ import java.util.Map;
 import com.alibaba.fastjson.JSON;
 
 import com.google.common.collect.Lists;
-import com.lzhenxing.javascaffold.common.CommonConst;
 import com.lzhenxing.javascaffold.entity.Manager;
 import com.lzhenxing.javascaffold.entity.User;
-import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.junit.Test;
 
 /**
@@ -44,14 +42,14 @@ public class JsonTest {
     }
 
     @Test
-    public void json2Map(){
-        String test = "{\"compatible\":\"1\",\"subPlatformType\":\"xyz_st1_hb0\",\"PROMOTIONV2\":\"1\","
-            + "\"overdueAdvanceFlag\":\"1\"}";
-        Map<String, String> attrMap = JSON.parseObject(test, Map.class);
-        if(attrMap.containsKey("overdueAdvanceFlag") && CommonConst.ATTRIBUTE_YES.equals(attrMap.get("overdueAdvanceFlag"))){
-            System.out.println("true");
-        }
-    }
+    //public void json2Map(){
+    //    String test = "{\"compatible\":\"1\",\"subPlatformType\":\"xyz_st1_hb0\",\"PROMOTIONV2\":\"1\","
+    //        + "\"overdueAdvanceFlag\":\"1\"}";
+    //    Map<String, String> attrMap = JSON.parseObject(test, Map.class);
+    //    if(attrMap.containsKey("overdueAdvanceFlag") && CommonConst.ATTRIBUTE_YES.equals(attrMap.get("overdueAdvanceFlag"))){
+    //        System.out.println("true");
+    //    }
+    //}
 
     public static void main(String[] args) {
         test1();

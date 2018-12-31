@@ -1,6 +1,7 @@
 package com.lzhenxing.javascaffold.javabase.grammar;
 
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import com.lzhenxing.javascaffold.entity.PictureDO;
 import com.lzhenxing.javascaffold.entity.User;
 import com.lzhenxing.javascaffold.util.json.FastJsonUtil;
@@ -11,7 +12,9 @@ import java.io.File;
 import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.alibaba.fastjson.JSON;
 
@@ -93,10 +96,14 @@ public class StringTest {
         System.out.println(e == f);  //true
     }
 
-    public static void equalTest(){
-        String test = "test";
+    @Test
+    public void equalTest(){
+        //String test = "test";
+        String test = null;
         String test1 = null;
-        System.out.println(test.equals(test1));
+        Map<String, String> map = new HashMap<>();
+        System.out.println(map.get("sdf"));
+        System.out.println(test.equals(map.get("sdf")));
     }
 
     public static void stringTest(){
@@ -175,6 +182,15 @@ public class StringTest {
         String[] strArr = test.split("\\|", -1);
         System.out.println(strArr.length);
     }
+
+    @Test
+    public void testStringSubString(){
+        String promotionMsg = "，结账金额变化已不满足优惠规则";
+        String test = promotionMsg.substring(1, promotionMsg.length());
+        System.out.println(test);
+    }
+
+
 
 
 
