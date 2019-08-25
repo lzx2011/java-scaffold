@@ -44,4 +44,7 @@ dependencies {
     compile(libraries.lombok)
     compile(libraries.gecco_spring)
     compile(libraries.gecco_htmlunit)
+    compile(libraries.pdfbox)
+    compile(libraries.itextpdf)
+    compile(libraries.itextAsian)
 }

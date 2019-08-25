@@ -20,15 +20,44 @@ public class ProductOfArrayExceptSelf {
     for (int r : result) System.out.print(r + " ");
   }
 
+    /**
+     * 符合题意的方法三
+     * @param nums
+     * @return
+     */
   public int[] productExceptSelf(int[] nums) {
     int[] result = new int[nums.length];
+    //result[i] 是从第一个到前面一个数的乘积
     for (int i = 0, temp = 1, l = nums.length; i < l; i++) {
       result[i] = temp;
       temp *= nums[i];
     }
+    //result[i] 是从最后一个到前后一个数的乘积
     for (int i = nums.length - 1, temp = 1; i >= 0; i--) {
       result[i] = result[i] * temp;
       temp *= nums[i];
+    }
+    return result;
+  }
+
+
+    /**
+     * 方法一：O(n*n)
+     *
+     * 方法二：(如果使用除法，先求总乘积，再除以每个相对应的位置数)
+     * @param nums
+     * @return
+     */
+  public int[] test(int[] nums){
+    int[] result = new int[nums.length];
+    for(int i = 0 ; i < nums.length; i++){
+        int temp = 1;
+        for(int j = 0; j < nums.length; j++){
+          if(i != j){
+              temp *= nums[j];
+          }
+          result[i] = temp;
+      }
     }
     return result;
   }

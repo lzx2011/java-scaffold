@@ -186,7 +186,9 @@ public class StringTest {
         //equalTest();
         //stringTest();】
         //jsonParseTest();
-        Object test = null;
-        System.out.println((User)test);
+        //Object test = null;
+        //System.out.println((User)test);
+        String divisionCode = "234325353451111";
+        System.out.println(divisionCode.substring(divisionCode.length() - 4));
     }
 }

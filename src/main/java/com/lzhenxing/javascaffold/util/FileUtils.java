@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -432,6 +433,13 @@ public class FileUtils {
         } catch (IOException e){
             e.printStackTrace();
         }
+    }
+
+    public static void downloadFile(String httpUrl) throws Exception{
+	    File templateFile = new File("");
+        URL url = new URL(httpUrl);
+        //FileUtils.copyURLToFile(url, templateFile);
+        //Fileutils
     }
 
     public static void main(String[] args){
