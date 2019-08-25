@@ -16,4 +16,8 @@ public class CommonConstant {
 
     public static final String ATTRIBUTE_YES = "1";
 
+
+    //merge test
+
+
 }
