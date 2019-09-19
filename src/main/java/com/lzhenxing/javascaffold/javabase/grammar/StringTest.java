@@ -175,6 +175,26 @@ public class StringTest {
         System.out.println(test);
     }
 
+    @Test
+    public void testSubString(){
+        String age = "21.0";
+        if(age.contains(".")){
+            System.out.println(age.substring(0, age.indexOf(".")));
+        }
+    }
+
+    @Test
+    public void testHttp(){
+        String signUrl = "http://recept.zjzwfw.gov.cn/oss//form/40df8d0c-ff87-468c-98fb-1730cd3385f1_signature1568798389465.png";
+        if(!signUrl.startsWith("http")){
+            signUrl = "http:" + signUrl;
+        }
+        System.out.println(signUrl);
+    }
+
+
+
+
 
 
 
