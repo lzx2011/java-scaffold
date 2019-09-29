@@ -4,6 +4,7 @@ package com.lzhenxing.javascaffold.javabase.algorithm.sort;
  * ClassName: QuickSort <br/>
  * Function: QuickSort<br/>
  *
+ * 参考：https://blog.csdn.net/nrsc272420199/article/details/82587933
  * @author gary.liu
  * @date 2019/9/29
  */
@@ -24,6 +25,7 @@ public class QuickSort {
             arr[high] = arr[low];
         }
         arr[low] = temp;
+        //System.out.println(low + ", " + high);
 
         return low;
     }
@@ -45,9 +47,6 @@ public class QuickSort {
         for(int i = 0; i < arr.length; i++){
             System.out.println(arr[i]);
         }
-        System.out.println(arr.toString());
-        System.out.println(arr);
-
     }
 
 

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:jee="http://www.springframework.org/schema/jee"
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+       xmlns:util="http://www.springframework.org/schema/util" xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.0.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.6.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+		"
+       default-lazy-init="true">
+
+    <context:annotation-config />
+    <context:component-scan base-package="com.lzhenxing.**" />
+
+    <!-- 引入配置文件 -->
+    <bean id="propertyConfigurer"
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location" value="classpath:jdbc.properties" />
+    </bean>
+
+    <!-- 配置redis 缓存服务器 -->
+    <bean id="connectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">
+        <property name="hostName" value="${redis.host}" />
+        <property name="port" value="${redis.port}" />
+        <!-- <property name="password" value="${redis.password}" /> -->
+    </bean>
+    <!-- redis操作模板 -->
+    <bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate" >
+        <property name="connectionFactory">
+            <ref bean="connectionFactory"/>
+        </property>
+    </bean>
+
+    <!-- aliyun open search config -->
+    <bean id="myOpenSearchService" class="com.lzhenxing.javascaffold.opensearch.MyOpenSearchService" init-method="init">
+        <property name="appName" value="${aliyun.appName}"/>
+        <property name="accesskey" value="${aliyun.accesskey}"/>
+        <property name="secret" value="${aliyun.secret}"/>
+        <property name="host" value="${aliyun.host}"/>
+    </bean>
+
+
+    <!--<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">-->
+        <!--<property name="basePackage" value="com.lzhenxing.**.repository" />-->
+        <!--<property name="sqlSessionFactoryBeanName" value="myBatisSqlSessionFactory" />-->
+        <!--<property name="annotationClass" value="org.springframework.stereotype.Repository" />-->
+    <!--</bean>-->
+
+    <!--<bean id="myBatisSqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">-->
+        <!--<property name="dataSource" ref="dataSource" />-->
+        <!--<property name="mapperLocations" value="classpath*:mapper/*Mapper.xml" />-->
+        <!--<property name="configLocation" value="classpath:/mybatis-config.xml" />-->
+    <!--</bean>-->
+
+    <!--<bean id="transactionManager" class="">-->
+        <!--<property name="dataSource" ref="dataSource" />-->
+    <!--</bean>-->
+
+
+</beans>
