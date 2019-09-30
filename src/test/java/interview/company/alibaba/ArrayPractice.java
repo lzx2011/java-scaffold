@@ -1,4 +1,4 @@
-package interview.alibaba;
+package interview.company.alibaba;
 
 import java.util.Arrays;
 import java.util.Comparator;
