@@ -1,7 +1,7 @@
 package spring;
 
 /**
- * @author yihua.huang@dianping.com
+  @author yihua.huang@dianping.com
  */
 public class OutputServiceImpl implements OutputService {
 
