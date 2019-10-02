@@ -17,6 +17,7 @@ ext{
     fastjsonVersion                         = '1.2.24'
     commonsLang3Version						= '3.3.2'
     commonsnetVersion                       = '3.5'
+    commonioVersion                         = '2.6'
     httpclientVersion						= '4.5.1'
     im4javaVersion							= '1.4.0'
     jsoupVersion                            = '1.8.3'
@@ -104,7 +105,8 @@ ext{
             lombok:             "org.projectlombok:lombok:${lombokVersion}",
             pdfbox:             "org.apache.pdfbox:pdfbox:${pdfboxVersion}",
             itextpdf:             "com.itextpdf:itextpdf:${itextVersion}",
-            itextAsian:             "com.itextpdf:itext-asian:${itextAsianVersion}"
+            itextAsian:             "com.itextpdf:itext-asian:${itextAsianVersion}",
+            commons_io:             "commons-io:commons-io:${commonioVersion}"
 
     ]
 

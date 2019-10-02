@@ -198,8 +198,15 @@ public class DateUtils {
 //        long millis = 1465021296L;
 //        System.out.println(getTimeString(millis*1000,FORMAT_LONG));
 
-        System.out.println(getDate());
-        System.out.println(string2date("2016-08-30", FORMAT_SHORT));
+        //System.out.println(getDate());
+        //System.out.println(string2date("2016-08-30", FORMAT_SHORT));
+        //System.out.println(getYear(new Date()));
+        //System.out.println(getMonth(new Date()));
+        //System.out.println(getDay(new Date()));
+
+        System.out.println(getTimeString(1568563200000L, FORMAT_SHORT));
+
+
 
     }
 }

@@ -23,6 +23,7 @@ import com.itextpdf.text.pdf.PdfImportedPage;
 import com.itextpdf.text.pdf.PdfReader;
 import com.itextpdf.text.pdf.PdfStamper;
 import com.itextpdf.text.pdf.PdfWriter;
+import org.apache.commons.lang3.StringUtils;
 import sun.misc.BASE64Decoder;
 
 /**
@@ -257,6 +258,97 @@ public class ItextPdfOperate {
             doc.close();
         }
 
+    }
+
+
+    public static void commonFillPdfForm(Map<String, String> formMap, String templatePath, String outputFilePath,
+                                         String signatureString) {
+        //生成的新文件路径
+        PdfReader reader;
+        FileOutputStream out;
+        ByteArrayOutputStream bos;
+        PdfStamper stamper;
+        Document doc = new Document();
+        try {
+            createDirectory(outputFilePath);
+            //输出流
+            out = new FileOutputStream(outputFilePath);
+            //读取pdf模板
+            reader = new PdfReader(templatePath);
+            bos = new ByteArrayOutputStream();
+            stamper = new PdfStamper(reader, bos);
+            AcroFields form = stamper.getAcroFields();
+
+            form.addSubstitutionFont(BaseFont.createFont("STSong-Light", "UniGB-UCS2-H", BaseFont.NOT_EMBEDDED));
+
+            java.util.Iterator<String> it = form.getFields().keySet().iterator();
+            while (it.hasNext()) {
+                String name = it.next().toString();
+                if(StringUtils.isBlank(formMap.get(name))){
+                    continue;
+                }
+                form.setField(name, formMap.get(name));
+
+                //处理 checkbox
+                int type = form.getFieldType(name);
+                System.out.println("key:" + name + ", type:" + type);
+                if(type == 2){
+                    //注意版本问题，这个true必填，否则会变成x; 或者使用较低版本
+                    //form.setField(name, "On", true);
+                    //form.setField(name, formMap.get(name), true);
+                    form.setField(name, formMap.get(name));
+                }
+            }
+
+            //处理签名
+            if (StringUtils.isNotBlank(signatureString)) {
+                // 通过域名获取所在页和坐标，左下角为起点
+                int pageNo = form.getFieldPositions("sign").get(0).page;
+                Rectangle signRect = form.getFieldPositions("sign").get(0).position;
+
+                // 读图片
+                BASE64Decoder decoder = new BASE64Decoder();
+                Image image = Image.getInstance(decoder.decodeBuffer(signatureString));
+                // 获取操作的页面
+                PdfContentByte under = stamper.getOverContent(pageNo);
+                // 根据域的大小缩放图片
+                image.scaleToFit(signRect.getWidth(), signRect.getHeight());
+                // 添加图片
+                image.setAbsolutePosition(signRect.getLeft(), signRect.getBottom());
+
+                under.addImage(image);
+            }
+            //如果为false那么生成的PDF文件还能编辑，一定要设为true
+            stamper.setFormFlattening(true);
+            stamper.close();
+
+            PdfCopy copy = new PdfCopy(doc, out);
+            doc.open();
+            PdfImportedPage importPage;
+            for(int i = 1; i <= reader.getNumberOfPages(); i++) {
+                importPage = copy
+                    .getImportedPage(new PdfReader(bos.toByteArray()), i);
+                copy.addPage(importPage);
+            }
+            doc.close();
+        } catch (Exception e) {
+            //logger.error("error",e);
+        }
+    }
+
+    public static void createDirectory(String filePath) {
+        int point = filePath.lastIndexOf(File.separator);
+        String path = filePath.substring(0, point + 1);
+
+        int index = path.indexOf(File.separator);
+        while(index>-1){
+            String tempPath = path.substring(0, index);
+            File file = new File(tempPath);
+            if (!file.exists()) {
+                file.mkdirs();
+            }
+            index = path.indexOf(File.separator, index + 1);
+        }
     }
 
 

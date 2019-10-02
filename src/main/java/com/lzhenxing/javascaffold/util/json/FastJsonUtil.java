@@ -59,7 +59,7 @@ public class FastJsonUtil {
      * String 转 beanList
      * @param jsonStr
      * @param objClass
-     * @param <T>
+     * @param <T>d
      * @return
      */
     public static <T> List<T> json2BeanList(String jsonStr, Class<T> objClass){

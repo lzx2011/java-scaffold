@@ -47,4 +47,5 @@ dependencies {
     compile(libraries.pdfbox)
     compile(libraries.itextpdf)
     compile(libraries.itextAsian)
+    compile(libraries.commons_io)
 }
