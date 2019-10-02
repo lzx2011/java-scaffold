@@ -21,4 +21,21 @@ public class Spring {
 
 
  */
+
+
+/** other
+ 1.IOC
+
+ 2.AOP
+
+
+
+
+
+
+
+
+
+
+ */
 }
